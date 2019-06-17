@@ -31,6 +31,7 @@ export const getLoading = (state: State) => state.application.loading;
 export const getFacilities = (state: State) => state.application.facilities;
 export const getSelectedFacility = (state: State) => state.application.selectedFacility;
 export const getTeamSchedules = (state: State) => state.application.teamSchedules;
+export const getErrorMessage = (state: State) => state.application.error;
 
 export const getAnesthesiaWorking = createSelector(
   getTeamSchedules,

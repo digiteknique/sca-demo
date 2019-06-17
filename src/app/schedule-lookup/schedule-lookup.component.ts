@@ -23,8 +23,8 @@ export class ScheduleLookupComponent implements OnInit {
     select(fromApplication.getTeamSchedules)
   );
 
-  public test$ = this.store.pipe(
-    select(fromApplication.getAnesthesiaWorking)
+  public error$ = this.store.pipe(
+    select(fromApplication.getErrorMessage)
   );
 
   public selectedFacility: FacilityModel;

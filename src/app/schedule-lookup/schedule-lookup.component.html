@@ -20,3 +20,7 @@
 <section *ngIf="!!selectedWeekStart && !!selectedFacility && (schedules$ | async)?.length > 0">
   <sca-schedule-view [weekStartDate]="selectedWeekStart" [teamSchedules]="(schedules$ | async)"></sca-schedule-view>
 </section>
+
+<footer *ngIf="(error$ | async)">
+  {{ error$ | async  }}
+</footer>
