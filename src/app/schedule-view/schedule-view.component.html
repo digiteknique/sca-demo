@@ -1,0 +1,49 @@
+<kendo-grid [data]="teamSchedules">
+  <ng-template kendoGridToolbarTemplate>
+    <span>Red indicates not enough Anesthesia staff to cover cases.</span>
+    <button type="button" style="float: right; margin-right: 10px;" kendoGridExcelCommand icon="file-excel">Export to
+      Excel</button>
+  </ng-template>
+  <kendo-grid-column field="teammateName">
+    <ng-template kendoGridHeaderTemplate>Teammate</ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="teammateType">
+    <ng-template kendoGridHeaderTemplate>Employee Type</ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column [headerClass]="insufficientAnesthesia(0)" field="monday">
+    <ng-template kendoGridHeaderTemplate>
+      <span [ngClass]="insufficientAnesthesia(0)">Monday {{ headerText(0) | date:'MM/dd' }}</span>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column [headerClass]="insufficientAnesthesia(1)" field="tuesday">
+    <ng-template kendoGridHeaderTemplate>
+      <span [ngClass]="insufficientAnesthesia(1)">Tuesday {{ headerText(1) | date:'MM/dd' }}</span>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column [headerClass]="insufficientAnesthesia(2)" field="wednesday">
+    <ng-template kendoGridHeaderTemplate>
+      <span [ngClass]="insufficientAnesthesia(2)">Wednesday {{ headerText(2) | date:'MM/dd' }}</span>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column [headerClass]="insufficientAnesthesia(3)" field="thursday">
+    <ng-template kendoGridHeaderTemplate>
+      <span [ngClass]="insufficientAnesthesia(3)">Thursday {{ headerText(3) | date:'MM/dd' }}</span>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column [headerClass]="insufficientAnesthesia(4)" field="friday">
+    <ng-template kendoGridHeaderTemplate>
+      <span [ngClass]="insufficientAnesthesia(4)">Friday {{ headerText(4) | date:'MM/dd' }}</span>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column [headerClass]="insufficientAnesthesia(5)" field="saturday">
+    <ng-template kendoGridHeaderTemplate>
+      <span [ngClass]="insufficientAnesthesia(5)">Saturday {{ headerText(5) | date:'MM/dd' }}</span>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column [headerClass]="insufficientAnesthesia(6)" field="sunday">
+    <ng-template kendoGridHeaderTemplate>
+      <span [ngClass]="insufficientAnesthesia(6)">Sunday {{ headerText(6) | date:'MM/dd' }}</span>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-excel fileName="Schedule.xlsx"></kendo-grid-excel>
+</kendo-grid>

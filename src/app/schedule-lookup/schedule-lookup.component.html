@@ -1,0 +1,22 @@
+<div>
+  <label for="facilitySelection">Select Facility: </label>
+  <select [(ngModel)]="selectedFacility" id="facilitySelection">
+    <option *ngFor="let facility of facilities$ | async" [value]="facility">{{ facility.facilityName }} ({{ facility.facilityId }})
+    </option>
+  </select>
+</div>
+<div>
+  <label for="weekSelection">Week start date: </label>
+  <kendo-datepicker [(value)]="selectedWeekStart" (valueChange)="weekSelected($event)" id="weekSelection" [weekNumber]="false">
+    <kendo-datepicker-messages today="This week">
+    </kendo-datepicker-messages>
+    <ng-template kendoCalendarMonthCellTemplate let-date>
+      <span [ngClass]="isMonday(date)">{{ date.getDate() }}</span>
+    </ng-template>
+  </kendo-datepicker>
+</div>
+<div><button (click)="loadSchedules()">View Schedule</button></div>
+
+<section *ngIf="!!selectedWeekStart && !!selectedFacility && (schedules$ | async)?.length > 0">
+  <sca-schedule-view [weekStartDate]="selectedWeekStart" [teamSchedules]="(schedules$ | async)"></sca-schedule-view>
+</section>
